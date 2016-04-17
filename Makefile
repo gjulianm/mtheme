@@ -5,6 +5,7 @@ DEMO_SRC    = demo/demo.tex demo/demo.bib
 DEMO_PDF    = demo/demo.pdf
 DOC_SRC     = doc/metropolistheme.dtx
 DOC_PDF     = doc/metropolistheme.pdf
+IMG 		= $(wildcard img/*.png)
 
 CTAN_CONTENT = README.md $(INS) $(PACKAGE_SRC) $(DOC_SRC) $(DOC_PDF) $(DEMO_SRC) $(DEMO_PDF)
 
@@ -31,11 +32,12 @@ demo: $(DEMO_PDF)
 
 clean: clean-cache clean-sty
 
-install: $(PACKAGE_STY) $(DOC_PDF)
+install: $(PACKAGE_STY) $(DOC_PDF) $(IMG)
 	@mkdir -p $(INSTALL_DIR)
 	@cp $(PACKAGE_STY) $(INSTALL_DIR)
 	@mkdir -p $(DOC_DIR)
 	@cp $(DOC_PDF) $(DOC_DIR)
+	@cp $(IMG) $(INSTALL_DIR)
 	@texhash
 
 uninstall:

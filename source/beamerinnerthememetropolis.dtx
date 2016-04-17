@@ -44,6 +44,7 @@
 \RequirePackage{calc}
 \RequirePackage{pgfopts}
 \RequirePackage{tikz}
+\RequirePackage{wrapfig}
 %    \end{macrocode}
 %
 %
@@ -117,6 +118,13 @@
 % Stack Exchange question}.
 %
 %    \begin{macrocode}
+    \if@metropolis@titlelogo
+      \begin{wrapfigure}{r}{0.6\textwidth}\begin{flushright}
+      \vspace{-20pt}
+      \@logo@big
+      \end{flushright}
+      \end{wrapfigure}
+    \fi
     \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
     \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
     \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi

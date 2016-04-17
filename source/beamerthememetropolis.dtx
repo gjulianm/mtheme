@@ -127,6 +127,40 @@
 }
 %    \end{macrocode}
 %
+% \begin{macro}{logo}
+%    Sets predefined logos.
+%    \begin{macrocode}
+\newif\if@metropolis@titlelogo
+\pgfkeys{
+  /metropolis/logo/.cd,
+    .is choice,
+    none/.code={%
+     \@metropolis@titlelogofalse
+    },
+    naudit/.code={
+      \@metropolis@titlelogotrue
+      \def\@logo@big{\includegraphics[width=100pt]{NauditLogo.png}}
+    },
+    hpcn/.code={
+      \@metropolis@titlelogotrue
+      \def\@logo@big{
+          \includegraphics[width=30pt]{HPCNLogo.png}%
+          \hspace{5pt}%
+          \raisebox{10pt}{\textsc{\large HPCN UAM}}%
+      }
+    },
+    eps/.code={
+      \@metropolis@titlelogotrue
+      \def\@logo@big{
+          \includegraphics[height = 60pt]{logo_eps.png}
+          \hspace{10pt}
+          \raisebox{15pt}{\includegraphics[height = 40pt]{logo_uam.png}}
+      }
+    },
+    .default = none
+}
+%    \end{macrocode}
+% \end{macro}
 %
 %
 % \subsubsection{Component sub-packages}
