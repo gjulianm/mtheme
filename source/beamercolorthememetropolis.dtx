@@ -77,10 +77,49 @@
 % \subsubsection{Base colors}
 %
 %    \begin{macrocode}
-\definecolor{mDarkBrown}{HTML}{604c38}
-\definecolor{mDarkTeal}{HTML}{23373b}
-\definecolor{mLightBrown}{HTML}{EB811B}
-\definecolor{mLightGreen}{HTML}{14B03D}
+
+\definecolor{mFontColor}{HTML}{23373b}
+
+\def\metropolis@colortheme@default{
+  \definecolor{mDarkBrown}{HTML}{604c38}
+  \definecolor{mDarkTeal}{HTML}{23373b}
+  \definecolor{mLightBrown}{HTML}{EB811B}
+  \definecolor{mLightGreen}{HTML}{14B03D}
+}
+
+\def\metropolis@colortheme@naudit{
+  \definecolor{mDarkBrown}{HTML}{8C1B1B}
+  \definecolor{mDarkTeal}{HTML}{105453}
+  \definecolor{mLightBrown}{HTML}{B18A3D}
+  \definecolor{mLightGreen}{HTML}{1E7776}
+}
+
+\def\metropolis@colortheme@hpcn{
+  % http://paletton.com/#uid=32K0t0kcuqpiTwgfdujaYmK8qjN
+  \definecolor{mDarkBrown}{HTML}{B59077}
+  \definecolor{mDarkTeal}{HTML}{7BB16C}
+  \definecolor{mLightGreen}{HTML}{7AB16C}
+  \definecolor{mLightBrown}{HTML}{FFA469}
+}
+
+\def\metropolis@colortheme@eps{
+  \definecolor{mDarkBrown}{HTML}{DF8429}
+  \definecolor{mDarkTeal}{HTML}{0185C5}
+  \definecolor{mLightGreen}{HTML}{0185C5}
+  \definecolor{mLightBrown}{HTML}{DD8335}
+}
+
+
+\pgfkeys{
+  /metropolis/color/theme/.cd,
+    .is choice,
+    metropolis/.code=\metropolis@colortheme@default,
+    naudit/.code=\metropolis@colortheme@naudit,
+    hpcn/.code=\metropolis@colortheme@hpcn,
+    eps/.code=\metropolis@colortheme@eps,
+    .default=metropolis
+}
+
 %    \end{macrocode}
 %
 %
@@ -99,7 +138,7 @@
 }
 \newcommand{\metropolis@colors@light}{
   \setbeamercolor{normal text}{%
-    fg=mDarkTeal,
+    fg=mFontColor,
     bg=black!2
   }
 }
@@ -137,7 +176,7 @@
 \setbeamercolor{palette primary}{%
   use=normal text,
   fg=normal text.bg,
-  bg=normal text.fg
+  bg=mDarkTeal
 }
 \setbeamercolor{frametitle}{%
   use=palette primary,
