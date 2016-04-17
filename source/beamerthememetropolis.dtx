@@ -114,6 +114,7 @@
   darkcolors/.code=\pgfkeysalso{color/background=dark},
   blockbg/.code=\pgfkeysalso{color/block=fill, inner/block=fill},
 }
+
 %    \end{macrocode}
 %
 % Set default values for options.
@@ -137,7 +138,17 @@
 \useinnertheme{metropolis}
 \useoutertheme{metropolis}
 \usecolortheme{metropolis}
-\usefonttheme{metropolis}
+
+\pgfkeys{/metropolis/fonttheme/.cd,
+  .is choice,
+    palatino/.code=\metropolis@loadpalatino,
+    metropolis/.code=\metropolis@loadmetrofont,
+    .default = metropolis
+}
+
+\def\metropolis@loadmetrofont{\usefonttheme{metropolis}}
+\def\metropolis@loadpalatino{\usefonttheme{palatino}}
+
 %    \end{macrocode}
 %
 % The |tol| theme for |pgfplots| is only loaded if |pgfplots| is used.

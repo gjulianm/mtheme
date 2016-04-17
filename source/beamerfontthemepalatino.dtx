@@ -30,133 +30,40 @@
 % \subsubsection{Package dependencies}
 %
 %    \begin{macrocode}
+\RequirePackage[defaultsans]{droidsans}
+\def\sfalternative{\fontfamily{fla}\selectfont}
+
 \RequirePackage{etoolbox}
-\RequirePackage{ifxetex}
-\RequirePackage{ifluatex}
 \RequirePackage{pgfopts}
 %    \end{macrocode}
 %
 %
 %
-% \subsubsection{Load Fira fonts}
-%
-% If the presentation is compiled with Xe\LaTeX{} or Lua\LaTeX{}, the fontspec
-% package is loaded and we search for the |Fira| fonts.
-%
-%    \begin{macrocode}
-\ifboolexpr{bool {xetex} or bool {luatex}}{
-  \RequirePackage[no-math]{fontspec}
+\renewcommand{\rmdefault}{ppl}
+\renewcommand{\ttdefault}{lmtt}
+\def\mathfamilydefault{\rmdefault}
+\renewcommand*{\familydefault}{\rmdefault}
 %    \end{macrocode}
-%
-% \begin{macro}{\checkfont}
-%    Checks if a font is installed; if not, |fontsnotfound| is increased.
-%    \begin{macrocode}
-  \newcounter{fontsnotfound}
-  \newcommand{\checkfont}[1]{%
-    \suppressfontnotfounderror=1%
-    \font\x = "#1" at 10pt
-    \selectfont
-    \ifx\x\nullfont%
-      \stepcounter{fontsnotfound}%
-    \fi%
-    \suppressfontnotfounderror=0%
-  }
-
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\iffontsavailable}
-%    Resets the |fontsnotfound| counter and calls |\checkfont| for each font in
-%    the comma separated list in the first argument.
-%    \begin{macrocode}
-  \newcommand{\iffontsavailable}[3]{%
-    \setcounter{fontsnotfound}{0}%
-    \expandafter\forcsvlist\expandafter%
-    \checkfont\expandafter{#1}%
-    \ifnum\value{fontsnotfound}=0%
-      #2%
-    \else%
-      #3%
-    \fi%
-  }
-%    \end{macrocode}
-% \end{macro}
-%
-% We search for regular, italic, light, light italic, mono, and mono bold
-% fonts under the default |Fira Sans| and |Fira Mono| names. If this fails,
-% the suffix OT --- used by some Linux distributions --- will be tried. If this
-% also fails, a warning will be displayed and the standard fonts will be used.
-%
-%    \begin{macrocode}
-  \iffontsavailable{Fira Sans Light,%
-                    Fira Sans Light Italic,%
-                    Fira Sans,%
-                    Fira Sans Italic}%
-  {%
-    \setsansfont[ItalicFont={Fira Sans Light Italic},%
-                 BoldFont={Fira Sans},%
-                 BoldItalicFont={Fira Sans Italic}]%
-                {Fira Sans Light}%
-  }{%
-    \iffontsavailable{Fira Sans Light OT,%
-                      Fira Sans Light Italic OT,%
-                      Fira Sans OT,%
-                      Fira Sans Italic OT}%
-    {%
-      \setsansfont[ItalicFont={Fira Sans Light Italic OT},%
-                   BoldFont={Fira Sans OT},%
-                   BoldItalicFont={Fira Sans Italic OT}]%
-                  {Fira Sans Light OT}%
-    }{%
-      \PackageWarning{beamerthememetropolis}{%
-        Could not find Fira Sans fonts%
-      }
-    }
-  }
-  \iffontsavailable{Fira Mono, Fira Mono Bold}{%
-    \setmonofont[BoldFont={Fira Mono Medium}]{Fira Mono}%
-  }{%
-    \iffontsavailable{Fira Mono OT, Fira Mono Bold OT}{%
-      \setmonofont[BoldFont={Fira Mono Medium OT}]{Fira Mono OT}%
-    }{%
-      \PackageWarning{beamerthememetropolis}{%
-        Could not find Fira Mono fonts%
-      }
-    }
-  }
-  \AtBeginEnvironment{tabular}{%
-    \addfontfeature{Numbers={Monospaced}}%
-  }
-}{%
-  \PackageWarning{beamerthememetropolis}{%
-    You need to compile with XeLaTeX or LuaLaTeX to use the Fira fonts%
-  }
-}
-%    \end{macrocode}
-%
-% This concludes the portion of the code which is only run when compiled with
-% Xe\LaTeX{} or Lua\LaTeX{}. The remainder of this package applies regardless
-% of the compiling engine.
-%
 %
 %
 % \subsubsection{General font definitions}
 %
 %    \begin{macrocode}
 \setbeamerfont{title}{size=\Large,%
-                      series=\bfseries}
+                      series=\scshape, family=\sfalternative}
 \setbeamerfont{author}{size=\small}
 \setbeamerfont{date}{size=\small}
-\setbeamerfont{section title}{size=\Large,%
-                              series=\bfseries}
+\setbeamerfont{section title}{size=\large,%
+                              series=\scshape, family = \sfalternative}
 \setbeamerfont{block title}{size=\normalsize,%
-                            series=\bfseries}
+                            series=\bfseries, family = \sfalternative}
 \setbeamerfont{block title alerted}{size=\normalsize,%
                                     series=\bfseries}
 \setbeamerfont*{subtitle}{size=\large}
 \setbeamerfont{frametitle}{size=\large,%
-                           series=\bfseries}
+                           family = \sffamily}
 \setbeamerfont{framesubtitle}{parent=frametitle,size=\normalsize}
+
 \setbeamerfont{caption}{size=\small}
 \setbeamerfont{caption name}{series=\bfseries}
 \setbeamerfont{description item}{series=\bfseries}
