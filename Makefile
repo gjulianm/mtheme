@@ -36,6 +36,7 @@ install: $(PACKAGE_STY) $(DOC_PDF)
 	@cp $(PACKAGE_STY) $(INSTALL_DIR)
 	@mkdir -p $(DOC_DIR)
 	@cp $(DOC_PDF) $(DOC_DIR)
+	@texhash
 
 uninstall:
 	@rm -f "$(addprefix $(INSTALL_DIR)/, $(PACKAGE_STY))"
