@@ -140,22 +140,32 @@
     naudit/.code={
       \@metropolis@titlelogotrue
       \def\@logo@big{\includegraphics[width=100pt]{NauditLogo.png}}
+      \setbeamertemplate{frame footer}[logo]
+      \def\@logo@small{\includegraphics[width=30pt]{NauditLogo.png}}
     },
     hpcn/.code={
       \@metropolis@titlelogotrue
       \def\@logo@big{
-          \includegraphics[width=30pt]{HPCNLogo.png}%
-          \hspace{5pt}%
-          \raisebox{10pt}{\textsc{\large HPCN UAM}}%
+        \includegraphics[width=30pt]{HPCNLogo.png}%
+        \hspace{5pt}%
+        \raisebox{10pt}{\textsc{\large HPCN UAM}}%
+      }
+      \setbeamertemplate{frame footer}[logo]
+      \def\@logo@small{
+        \includegraphics[width=12pt]{HPCNLogo.png}%
+        \hspace{2pt}%
+        \raisebox{4pt}{\textsc{HPCN UAM}}%
       }
     },
     eps/.code={
       \@metropolis@titlelogotrue
       \def\@logo@big{
-          \includegraphics[height = 60pt]{logo_eps.png}
-          \hspace{10pt}
-          \raisebox{15pt}{\includegraphics[height = 40pt]{logo_uam.png}}
+        \includegraphics[height = 60pt]{logo_eps.png}
+        \hspace{10pt}
+        \raisebox{15pt}{\includegraphics[height = 40pt]{logo_uam.png}}
       }
+      \setbeamertemplate{frame footer}[logo]
+      \def\@logo@small{\includegraphics[height=12pt]{logo_eps_inline.png}}
     },
     .default = none
 }
