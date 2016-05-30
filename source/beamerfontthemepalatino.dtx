@@ -12,7 +12,7 @@
 % \iffalse
 %<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerfontthememetropolis}[2016/03/14 Metropolis font theme]
+\ProvidesPackage{beamerfontthemepalatino}[2016/03/14 Metropolis font theme]
 %</package>
 % \fi
 % \CheckSum{0}
@@ -59,7 +59,7 @@
                             family = \sfalternative}
 \setbeamerfont{block title alerted}{size=\normalsize}
 \setbeamerfont{alerted text}{family = \sfalternative}
-\setbeamerfont*{subtitle}{size=\large}
+\setbeamerfont{subtitle}{size=\normalsize, series = \rm, family = \rmfamily}
 \setbeamerfont{frametitle}{size=\large,%
                            family = \sffamily}
 \setbeamerfont{framesubtitle}{parent=frametitle,size=\normalsize}
@@ -124,7 +124,7 @@
     .is choice,
     regular/.code={%
       \let\metropolis@subtitleformat\@empty%
-      \setbeamerfont{subtitle}{shape=\normalfont}%
+      \setbeamerfont{subtitle}{shape=\normalfont, family = \rmfamily}%
     },
     smallcaps/.code={%
       \let\metropolis@subtitleformat\@empty%

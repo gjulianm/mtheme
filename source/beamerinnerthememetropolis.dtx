@@ -107,7 +107,7 @@
     \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
     \vfill%
     \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
-    \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+    \ifx\insertsubtitle\@empty\else\usebeamertemplate{subtitle}\fi
     \usebeamertemplate*{title separator}
 %    \end{macrocode}
 %
@@ -181,6 +181,7 @@
 \setbeamertemplate{title}{
   \raggedright%
   \linespread{1.0}%
+  \usebeamerfont{title}
   \inserttitle%
   \par%
   \vspace*{0.5em}
@@ -192,9 +193,9 @@
 %   Set the subtitle on the title page.
 %    \begin{macrocode}
 \setbeamertemplate{subtitle}{
+  \usebeamerfont{subtitle}
   \insertsubtitle%
   \par%
-  \vspace*{0.5em}
 }
 %    \end{macrocode}
 % \end{macro}
