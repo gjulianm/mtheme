@@ -172,7 +172,11 @@
   \metropolis@frametitlestrut@start%
   \insertframetitle%
   \hfill%
+  \if@metropolis@sectionassubtitle
+  \usebeamerfont{framesubtitle}{\insertsection}
+  \else
   \usebeamerfont{framesubtitle}{\insertframesubtitle}
+  \fi
   \nolinebreak%
   \metropolis@frametitlestrut@end%
   \end{beamercolorbox}%

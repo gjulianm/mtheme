@@ -57,7 +57,19 @@
   }
 }
 %    \end{macrocode}
-%
+
+% \begin{macro}{Section as frame subtitle}
+%   Use the section name as the frame subtitle.
+%    \begin{macrocode}
+\newif\if@metropolis@sectionassubtitle
+\@metropolis@sectionassubtitlefalse
+
+\pgfkeys{
+  /metropolis/section as frame subtitle/.code = \@metropolis@sectionassubtitletrue
+}
+%    \end{macrocode}
+% \end{macro}
+
 % \begin{macro}{titleformat plain}
 %    Controls the formatting of the text on standout ``plain'' frames.
 %    \begin{macrocode}
