@@ -44,6 +44,9 @@
     transparent/.code=\metropolis@block@transparent,
     fill/.code=\metropolis@block@fill,
 }
+
+\newif\if@mtheme@grayscale
+\@mtheme@grayscalefalse
 %    \end{macrocode}
 % \end{macro}
 %
@@ -85,6 +88,7 @@
   \definecolor{mDarkTeal}{HTML}{23373b}
   \definecolor{mLightBrown}{HTML}{EB811B}
   \definecolor{mLightGreen}{HTML}{14B03D}
+  \colorlet{mBackground}{black!2}
 }
 
 \def\metropolis@colortheme@naudit{
@@ -92,6 +96,7 @@
   \definecolor{mDarkTeal}{HTML}{105453}
   \definecolor{mLightBrown}{HTML}{B18A3D}
   \definecolor{mLightGreen}{HTML}{1E7776}
+  \colorlet{mBackground}{black!2}
 }
 
 \def\metropolis@colortheme@hpcn{
@@ -100,6 +105,7 @@
   \definecolor{mDarkTeal}{HTML}{7BB16C}
   \definecolor{mLightGreen}{HTML}{7AB16C}
   \definecolor{mLightBrown}{HTML}{FFA469}
+  \colorlet{mBackground}{black!2}
 }
 
 \def\metropolis@colortheme@eps{
@@ -107,6 +113,20 @@
   \definecolor{mDarkTeal}{HTML}{0185C5}
   \definecolor{mLightGreen}{HTML}{0185C5}
   \definecolor{mLightBrown}{HTML}{DD8335}
+  \colorlet{mBackground}{black!2}
+}
+
+\def\metropolis@colortheme@grayscale{
+  \colorlet{mDarkBrown}{black}
+  \colorlet{mDarkTeal}{black}
+  \colorlet{mLightGreen}{gray!80!black}
+  \colorlet{mLightBrown}{gray!60!black}
+  \colorlet{mBackground}{white}
+  \setbeamercolor{frametitle}{%
+    bg = white,
+    fg = black
+  }
+  \global\@mtheme@grayscaletrue
 }
 
 
@@ -117,6 +137,7 @@
     naudit/.code=\metropolis@colortheme@naudit,
     hpcn/.code=\metropolis@colortheme@hpcn,
     eps/.code=\metropolis@colortheme@eps,
+    grayscale/.code=\metropolis@colortheme@grayscale,
     .default=metropolis
 }
 
@@ -132,14 +153,14 @@
 %    \begin{macrocode}
 \newcommand{\metropolis@colors@dark}{
   \setbeamercolor{normal text}{%
-    fg=black!2,
+    fg=mBackground,
     bg=mDarkTeal
   }
 }
 \newcommand{\metropolis@colors@light}{
   \setbeamercolor{normal text}{%
     fg=mFontColor,
-    bg=black!2
+    bg=mBackground
   }
 }
 \setbeamercolor{alerted text}{%
@@ -178,6 +199,7 @@
   fg=normal text.bg,
   bg=mDarkTeal
 }
+
 \setbeamercolor{frametitle}{%
   use=palette primary,
   parent=palette primary

@@ -547,19 +547,30 @@
     \setkeys{beamerframe}{noframenumbering}
     \metroset{numbering = none}
     \metroset{logo = none}
-    \ifbeamercolorempty[bg]{palette primary}{
+    \if@mtheme@grayscale
       \setbeamercolor{background canvas}{
-        use=palette primary,
-        bg=-palette primary.fg
+          bg=mBackground
+        }
+    \else
+      \ifbeamercolorempty[bg]{palette primary}{
+        \setbeamercolor{background canvas}{
+          use=palette primary,
+          bg=-palette primary.fg
+        }
+      }{
+        \setbeamercolor{background canvas}{
+          use=palette primary,
+          bg=palette primary.bg
+        }
       }
-    }{
-      \setbeamercolor{background canvas}{
-        use=palette primary,
-        bg=palette primary.bg
-      }
-    }
+    \fi
   \centering
-  \usebeamercolor[fg]{palette primary}
+
+  \if@mtheme@grayscale
+    \usebeamercolor[bg]{palette primary}
+  \else
+    \usebeamercolor[fg]{palette primary}
+  \fi
   \usebeamerfont{standout}
 }
 %    \end{macrocode}
