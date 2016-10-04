@@ -6,6 +6,7 @@ DEMO_PDF    = demo/demo.pdf
 DOC_SRC     = doc/metropolistheme.dtx
 DOC_PDF     = doc/metropolistheme.pdf
 IMG 		= $(wildcard img/*.png)
+IMG 	   += $(wildcard img/*.eps)
 
 CTAN_CONTENT = README.md $(INS) $(PACKAGE_SRC) $(DOC_SRC) $(DOC_PDF) $(DEMO_SRC) $(DEMO_PDF)
 

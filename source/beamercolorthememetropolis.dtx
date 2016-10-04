@@ -116,6 +116,15 @@
   \colorlet{mBackground}{black!2}
 }
 
+
+\def\metropolis@colortheme@epfl{
+  \definecolor{mDarkBrown}{HTML}{0E655F}
+  \definecolor{mDarkTeal}{HTML}{800007}
+  \definecolor{mLightGreen}{HTML}{49002C}
+  \definecolor{mLightBrown}{HTML}{A45416}
+  \colorlet{mBackground}{black!2}
+}
+
 \def\metropolis@colortheme@grayscale{
   \colorlet{mDarkBrown}{black}
   \colorlet{mDarkTeal}{black}
@@ -137,6 +146,7 @@
     naudit/.code=\metropolis@colortheme@naudit,
     hpcn/.code=\metropolis@colortheme@hpcn,
     eps/.code=\metropolis@colortheme@eps,
+    epfl/.code=\metropolis@colortheme@epfl,
     grayscale/.code=\metropolis@colortheme@grayscale,
     .default=metropolis
 }

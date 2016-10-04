@@ -186,6 +186,14 @@
       \setbeamertemplate{frame footer}[logo]
       \def\@logo@small{\includegraphics[height=12pt]{logo_eps_inline.png}}
     },
+    epfl/.code={
+      \@metropolis@titlelogotrue
+      \def\@logo@big{
+        \includegraphics[width = 80pt]{EPFLLogo.eps}
+      }
+      \setbeamertemplate{frame footer}[logo]
+      \def\@logo@small{\hspace{6pt}\includegraphics[height=12pt]{EPFLLogo.eps}}
+    },
     .default = none
 }
 %    \end{macrocode}
