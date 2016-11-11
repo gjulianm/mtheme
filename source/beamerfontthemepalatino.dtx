@@ -35,6 +35,7 @@
 
 \RequirePackage{etoolbox}
 \RequirePackage{pgfopts}
+\RequirePackage{mathpazo}
 %    \end{macrocode}
 %
 %
@@ -49,6 +50,18 @@
 % \subsubsection{General font definitions}
 %
 %    \begin{macrocode}
+
+% Avoid widow/orphan lines
+\widowpenalty10000
+\clubpenalty10000
+\raggedbottom
+
+% Try to remove hyphenation as much as possible
+\pretolerance=9000
+\tolerance=2000
+\emergencystretch=2pt
+
+
 \setbeamerfont{title}{size=\Large,%
                       series=\scshape, family=\sfalternative}
 \setbeamerfont{author}{size=\small}
