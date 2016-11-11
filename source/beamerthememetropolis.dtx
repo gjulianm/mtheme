@@ -38,10 +38,12 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8x]{inputenc}
 \RequirePackage{ifxetex}
+\RequirePackage{ifluatex}
 
 \ifboolexpr{not bool {xetex} and not bool {luatex}}{
   \PrerenderUnicode{ÁáÉéÍíÓóÚúÑñ}
 }
+
 %    \end{macrocode}
 %
 %

@@ -66,7 +66,7 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{sectionpage}
+% \begin{macro}{subsectionpage}
 %    Optionally add a slide marking the beginning of each subsection.
 %    \begin{macrocode}
 \pgfkeys{
@@ -193,7 +193,8 @@
 %   Set the subtitle on the title page.
 %    \begin{macrocode}
 \setbeamertemplate{subtitle}{
-  \usebeamerfont{subtitle}
+  \usebeamerfont{subtitle}%
+  \raggedright%
   \insertsubtitle%
   \par%
 }
@@ -204,9 +205,11 @@
 %   Template to set the title graphic in a zero-height box. (It won't
 %   change the position of other elements.)
 %    \begin{macrocode}
+\newlength{\metropolis@titleseparator@linewidth}
+\setlength{\metropolis@titleseparator@linewidth}{0.4pt}
 \setbeamertemplate{title separator}{
   \begin{tikzpicture}
-    \fill[fg] (0,0) rectangle (\textwidth, 0.4pt);
+    \fill[fg] (0,0) rectangle (\textwidth, \metropolis@titleseparator@linewidth);
   \end{tikzpicture}%
   \par%
 }
@@ -260,10 +263,10 @@
     \usebeamercolor[fg]{section title}
     \usebeamerfont{section title}
     \insertsectionhead\par
-    \ifx\insertsubsection\@empty\else
+    \ifx\insertsubsectionhead\@empty\else
       \usebeamercolor[fg]{subsection title}
       \usebeamerfont{subsection title}
-      \insertsubsection
+      \insertsubsectionhead
     \fi
   \end{center}
 }
@@ -276,10 +279,10 @@
     \insertsectionhead\\[-1ex]
     \usebeamertemplate*{progress bar in section page}
     \par
-    \ifx\insertsubsection\@empty\else%
+    \ifx\insertsubsectionhead\@empty\else%
       \usebeamercolor[fg]{subsection title}%
       \usebeamerfont{subsection title}%
-      \insertsubsection
+      \insertsubsectionhead
     \fi
   \end{minipage}
   \par
@@ -336,13 +339,15 @@
 %
 %    \begin{macrocode}
 \newlength{\metropolis@progressonsectionpage}
+\newlength{\metropolis@progressonsectionpage@linewidth}
+\setlength{\metropolis@progressonsectionpage@linewidth}{0.4pt}
 \setbeamertemplate{progress bar in section page}{
   \setlength{\metropolis@progressonsectionpage}{%
     \textwidth * \ratio{\insertframenumber pt}{\inserttotalframenumber pt}%
   }%
   \begin{tikzpicture}
-    \fill[bg] (0,0) rectangle (\textwidth, 0.4pt);
-    \fill[fg] (0,0) rectangle (\metropolis@progressonsectionpage, 0.4pt);
+    \fill[bg] (0,0) rectangle (\textwidth, \metropolis@progressonsectionpage@linewidth);
+    \fill[fg] (0,0) rectangle (\metropolis@progressonsectionpage, \metropolis@progressonsectionpage@linewidth);
   \end{tikzpicture}%
 }
 %    \end{macrocode}
