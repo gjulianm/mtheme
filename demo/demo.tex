@@ -1,12 +1,20 @@
-\documentclass[10pt]{beamer}
+\documentclass[10pt, aspectratio=1610]{beamer}
 
 \usetheme{metropolis}
 
 \usepackage{appendixnumberbeamer}
 
-\metroset{fonttheme = palatino}
-\metroset{color/theme = eps}
-\metroset{logo = eps}
+\metroset{
+        color/theme = epfl, % Available: eps, naudit, hpcn, epfl
+        fonttheme = palatino,
+        titleformat = allsmallcaps,
+        titleformat subtitle = regular,
+        numbering = counter,
+        progressbar = frametitle,
+        titleformat plain = regular,
+        logo = epfl, % Available: eps, naudit, hpcn, epfl
+        section as frame subtitle
+}
 
 \usepackage{booktabs}
 \usepackage[scale=2]{ccicons}
