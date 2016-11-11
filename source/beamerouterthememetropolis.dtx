@@ -110,9 +110,10 @@
 %    Templates for the frame number. Can be omitted, shown or displayed as a
 %    fraction of the total frames.
 %    \begin{macrocode}
+
 \defbeamertemplate{frame footer}{none}{}
 \defbeamertemplate{frame footer}{custom}[1]{ #1 }
-\defbeamertemplate{frame footer}{logo}{\raisebox{-1ex}{\@logo@small}}
+\defbeamertemplate{frame footer}{logo}{\raisebox{-1ex}{\@logo@small}\if@has@extrafooter\hspace{10pt}\@extrafooter\fi}
 %    \end{macrocode}
 %
 %    \begin{macrocode}

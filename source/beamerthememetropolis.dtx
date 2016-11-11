@@ -117,6 +117,19 @@
 }
 %    \end{macrocode}
 % \end{macro}
+% \begin{macro}{footer}
+%    Allow including other values in the footer.
+%    \begin{macrocode}
+\newif\if@has@extrafooter
+\@has@extrafooterfalse
+\pgfkeys{
+  /metropolis/footer/.code = {
+    \@has@extrafootertrue
+    \global\def\@extrafooter{#1}
+  }
+}
+%    \end{macrocode}
+% \end{macro}
 %
 % For backwards compatibility with earlier betas of the theme, we implement
 % deprecated option names as aliases to the corresponding |key=value| options.
@@ -152,7 +165,7 @@
     .is choice,
     none/.code={%
      \@metropolis@titlelogofalse
-     \setbeamertemplate{frame footer}[none]
+     \setbeamertemplate{frame footer}[logo]
      \def\@logo@big{}
      \def\@logo@small{}
     },
