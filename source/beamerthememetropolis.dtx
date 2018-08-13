@@ -204,6 +204,16 @@
       \setbeamertemplate{frame footer}[logo]
       \def\@logo@small{\includegraphics[height=12pt]{logo_eps_inline.png}}
     },
+    uamnaudit/.code={
+      \@metropolis@titlelogotrue
+      \def\@logo@big{
+        \includegraphics[height = 30pt]{NauditLogo.png}
+        \hspace{15pt}
+        \raisebox{0pt}{\includegraphics[height = 30pt]{logo_uam.png}}
+      }
+      \setbeamertemplate{frame footer}[logo]
+      \def\@logo@small{\includegraphics[height=12pt]{logo_eps_inline.png}}
+    },
     epfl/.code={
       \@metropolis@titlelogotrue
       \def\@logo@big{
