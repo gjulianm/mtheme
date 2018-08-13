@@ -436,6 +436,13 @@ of \themename specific colors, which can also be redefined to your liking.
 \setbeamercolor{progress bar in section page}{ ... }
 \end{lstlisting}
 
+For low-light situations \themename it might be helpful to use the
+|metropolis-highcontrast| color theme. It is enabled like any other color theme:
+
+\begin{lstlisting}
+\usecolortheme{metropolis-highcontrast}
+\end{lstlisting}
+
 
 \subsection{Font Customization}
 
@@ -521,7 +528,7 @@ possible as well as from black and white, can be discerned item under different
 lighting and display environments and by color-blind viewers, while matching
 well together.
 
-In a \href{https://personal.sron.nl/~pault/colourschemes.pdf}{technical note}
+In a \href{https://personal.sron.nl/~pault/data/colourschemes.pdf}{technical note}
 for SRON, Paul Tol proposed a palette of colors satisfying these constraints.
 The sub-package |pgfplotsthemetol| defines palettes for |pgfplots| charts
 based on Tol's work.
