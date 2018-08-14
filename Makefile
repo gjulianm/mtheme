@@ -1,3 +1,4 @@
+MAKEFLAGS  := -j 1
 INS         = source/beamerthememetropolis.ins
 PACKAGE_SRC = $(wildcard source/*.dtx)
 PACKAGE_STY = $(notdir $(PACKAGE_SRC:%.dtx=%.sty))
@@ -11,8 +12,8 @@ IMG 	   += $(wildcard img/*.eps)
 CTAN_CONTENT = README.md $(INS) $(PACKAGE_SRC) $(DOC_SRC) $(DOC_PDF) $(DEMO_SRC) $(DEMO_PDF)
 
 DESTDIR     ?= $(shell kpsewhich -var-value=TEXMFHOME)
-INSTALL_DIR = $(DESTDIR)/tex/latex/metropolis
-DOC_DIR     = $(DESTDIR)/doc/latex/metropolis
+INSTALL_DIR  = $(DESTDIR)/tex/latex/metropolis
+DOC_DIR      = $(DESTDIR)/doc/latex/metropolis
 CACHE_DIR   := $(shell pwd)/.latex-cache
 
 COMPILE_TEX := latexmk -xelatex -output-directory=$(CACHE_DIR)
@@ -71,14 +72,14 @@ $(DOC_PDF): $(DOC_SRC) $(PACKAGE_STY) | clean-cache $(CACHE_DIR)
 	@cp $(CACHE_DIR)/$(notdir $(DOC_PDF)) $(DOC_PDF)
 
 $(DEMO_PDF): $(DEMO_SRC) $(PACKAGE_STY) | clean-cache $(CACHE_DIR)
-	@cd $(dir $(DEMO_SRC)) && $(COMPILE_TEX) $(notdir $(DEMO_SRC))
+	@cd demo && $(COMPILE_TEX) $(notdir $(DEMO_SRC))
 	@cp $(CACHE_DIR)/$(notdir $(DEMO_PDF)) $(DEMO_PDF)
 
 docker-run: docker-build
 	docker run --rm=true --name $(DOCKER_CONTAINER) -i -t -v `pwd`:/data $(DOCKER_IMAGE) make
 
 docker-build:
-	docker build -t $(DOCKER_IMAGE) .
+	docker build -t $(DOCKER_IMAGE) docker
 
 docker-rm:
 	docker rm $(DOCKER_CONTAINER)

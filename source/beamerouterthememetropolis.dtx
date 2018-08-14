@@ -12,7 +12,7 @@
 % \iffalse
 %<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerouterthememetropolis}[2016/03/14 Metropolis outer theme]
+\ProvidesPackage{beamerouterthememetropolis}[2017/01/23 Metropolis outer theme]
 %</package>
 % \fi
 % \CheckSum{0}
@@ -204,10 +204,12 @@
     \paperwidth * \ratio{\insertframenumber pt}{\inserttotalframenumber pt}%
   }%
   \begin{beamercolorbox}[wd=\paperwidth]{progress bar in head/foot}
+    \tikzexternaldisable%
     \begin{tikzpicture}
       \fill[bg] (0,0) rectangle (\paperwidth, \metropolis@progressinheadfoot@linewidth);
       \fill[fg] (0,0) rectangle (\metropolis@progressinheadfoot, \metropolis@progressinheadfoot@linewidth);
     \end{tikzpicture}%
+    \tikzexternalenable%
   \end{beamercolorbox}
 }
 %    \end{macrocode}

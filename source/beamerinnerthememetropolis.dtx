@@ -12,7 +12,7 @@
 % \iffalse
 %<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerinnerthememetropolis}[2016/03/14 Metropolis inner theme]
+\ProvidesPackage{beamerinnerthememetropolis}[2017/01/23 Metropolis inner theme]
 %</package>
 % \fi
 % \CheckSum{0}
@@ -208,9 +208,11 @@
 \newlength{\metropolis@titleseparator@linewidth}
 \setlength{\metropolis@titleseparator@linewidth}{0.4pt}
 \setbeamertemplate{title separator}{
+  \tikzexternaldisable%
   \begin{tikzpicture}
     \fill[fg] (0,0) rectangle (\textwidth, \metropolis@titleseparator@linewidth);
   \end{tikzpicture}%
+  \tikzexternalenable%
   \par%
 }
 %    \end{macrocode}
@@ -345,10 +347,12 @@
   \setlength{\metropolis@progressonsectionpage}{%
     \textwidth * \ratio{\insertframenumber pt}{\inserttotalframenumber pt}%
   }%
+  \tikzexternaldisable%
   \begin{tikzpicture}
     \fill[bg] (0,0) rectangle (\textwidth, \metropolis@progressonsectionpage@linewidth);
     \fill[fg] (0,0) rectangle (\metropolis@progressonsectionpage, \metropolis@progressonsectionpage@linewidth);
   \end{tikzpicture}%
+  \tikzexternalenable%
 }
 %    \end{macrocode}
 %
@@ -541,7 +545,7 @@
 %     Optional arguments to Beamer's frames are implemented using
 %     |\define@key| from the |keyval| package, which will execute code when the
 %     defined option is called. For the |standout| option, we begin a group,
-%     change the colors and fonts, and set a \centering alignment.
+%     change the colors and set frame options.
 %
 %    \begin{macrocode}
 \providebool{metropolis@standout}
@@ -584,16 +588,29 @@
 %    in order to restore the colours and fonts for the rest of the
 %    presentation. Unfortunately, we cannot use \AfterEndEnvironment{frame} for
 %    this (see \url{http://tex.stackexchange.com/questions/226319/}).
-%    Instead, we add the |\endgroup| to |\beamer@reseteecodes|, which is run
+%    Instead, we prepend the |\endgroup| to |\beamer@reseteecodes|, which is run
 %    exactly once at the end of each slide.
 %
 %    \begin{macrocode}
-  \apptocmd{\beamer@reseteecodes}{%
+  \pretocmd{\beamer@reseteecodes}{%
     \ifbool{metropolis@standout}{
       \endgroup
       \boolfalse{metropolis@standout}
     }{}
   }{}{}
+%    \end{macrocode}
+%
+%    We set the fonts and the \centering alignment on the inner content,
+%    in such a way that the speaker's note layout isn't affected by the custom
+%    formatting.
+%
+%    \begin{macrocode}
+  \AtBeginEnvironment{beamer@frameslide}{
+    \ifbool{metropolis@standout}{
+      \centering
+      \usebeamerfont{standout}
+    }{}
+  }
 %    \end{macrocode}
 % \end{macro}
 %
